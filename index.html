@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Petits Plats</title>
+    <link rel="shortcut icon" href="./assets/icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+</head>
+
+<body>
+    <header>
+        <a href="./index.html">
+            <img src="./assets/images/logo.svg" alt="page d'accueil de fisheye" class="logo" />
+        </a>
+        <h1>Les petits plats</h1>
+    </header>
+    <main class="main-content">
+        <div class="input-control">
+            <input type="text" id="search-input" autocomplete="off" 
+            placeholder="Rechercher une recette, un ingrédient, un appareil, un ustensile">
+            <label for="search-input">
+                <img src="./assets/images/search.svg" alt="search icon">
+            </label>
+        </div>
+        <div class="tags-control">
+            <h2>Ici les boutons Ingrédients, Appareils et Ustensiles</h2>
+        </div>
+        <ul class="recipes-list">
+        </ul>
+    </main>
+    <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>
