@@ -18,11 +18,6 @@ export function searchForAllParameters(getRecipesJSON) {
 
         const searchedString = e.target.value.toLowerCase();
 
-        // console.log(searchedString.length)
-
-        // const filteredArr = getRecipesJSON().filter(recipeData => recipeData.ingredients.some(
-        //     el => el.ingredient.toLowerCase().includes(searchedString)));
-
         const filteredArr = getRecipesJSON().filter(
             recipeData => recipeData.name.toLowerCase().includes(searchedString)
             || recipeData.description.toLowerCase().includes(searchedString)

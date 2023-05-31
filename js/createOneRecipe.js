@@ -3,6 +3,7 @@
 export function createOneRecipe(recipe) {
 
     const propertyIngredient_s_OfEachObjectRecipe = recipe.ingredients;
+
     const RECIPE_INGREDIENTS_WRAPPER = document.createElement("ul");
     RECIPE_INGREDIENTS_WRAPPER.className = "recipe-ingredients-wrapper";
 
@@ -12,14 +13,37 @@ export function createOneRecipe(recipe) {
 
         recipeIngredientItem.className = "recipe-ingredient-li";
 
-        recipeIngredientItem.innerHTML = `${oneIteratedObjectIngredient.ingredient}`;
+        if(oneIteratedObjectIngredient.hasOwnProperty('quantity') && 
+        oneIteratedObjectIngredient.hasOwnProperty('unit')) {
+            const templateLi = `
+            <span class = "recipe-ingredient-span-ingredient">${oneIteratedObjectIngredient.ingredient}</span>
+            <span class = "recipe-ingredient-span-quantity">${oneIteratedObjectIngredient.quantity}</span>
+            <span class = "recipe-ingredient-span-unit">${oneIteratedObjectIngredient.unit}</span>
+        `;
+        recipeIngredientItem.innerHTML = templateLi;
+        }
+        if(oneIteratedObjectIngredient.hasOwnProperty('quantity') && 
+        !oneIteratedObjectIngredient.hasOwnProperty('unit')) {
+            const templateLi = `
+            <span class = "recipe-ingredient-span-ingredient">${oneIteratedObjectIngredient.ingredient}</span>
+            <span class = "recipe-ingredient-span-quantity">${oneIteratedObjectIngredient.quantity}</span>
+        `;
+        recipeIngredientItem.innerHTML = templateLi;
+        }
+        if(!oneIteratedObjectIngredient.hasOwnProperty('quantity') && 
+        !oneIteratedObjectIngredient.hasOwnProperty('unit')) {
+            const templateLi = `
+            <span class = "recipe-ingredient-span-ingredient">${oneIteratedObjectIngredient.ingredient}</span>
+        `;
+        recipeIngredientItem.innerHTML = templateLi;
+        }
 
         RECIPE_INGREDIENTS_WRAPPER.appendChild(recipeIngredientItem);
     };
 
-    const ITEM_RECIPE = document.createElement('li');
+    const ITEM_RECIPE_LI = document.createElement('li');
 
-    ITEM_RECIPE.className = "recipe-item";
+    ITEM_RECIPE_LI.className = "recipe-item";
 
     const templateRecipe = `
         <div class="recipe-image">
@@ -40,6 +64,7 @@ export function createOneRecipe(recipe) {
             </div>
         </div>
     `;
-    ITEM_RECIPE.innerHTML = templateRecipe;
-    return ITEM_RECIPE;
+
+    ITEM_RECIPE_LI.innerHTML = templateRecipe;
+    return ITEM_RECIPE_LI;
 }

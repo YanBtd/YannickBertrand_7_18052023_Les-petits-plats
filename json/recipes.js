@@ -1,4 +1,6 @@
-const recipesJSON = [
+'use strict';
+
+export const recipes = [
     {
         "id": 1,
         "name": "Limonade de Coco",

@@ -1,16 +1,15 @@
 'use strict';
 
-// Import de la méthode de création d'une recipe
+// Import de la méthode de création d'une recette
 import { createOneRecipe } from "./createOneRecipe.js";
 
-// Création de la liste <ul> des recipes
+// Création de la liste <ul> des recettes
 export function displayAllRecipes(recipesJsonArr) {
 
     const recipesList = document.querySelector(".recipes-list");
 
-    recipesJsonArr.forEach(recipe => {
-        // console.log(recipe)
-        // On peuple la <ul> avec toutes les recipes via crateOneRecipe()
-        recipesList.appendChild(createOneRecipe(recipe));
+    recipesJsonArr.forEach(objectRecipe => {
+        // On peuple la <ul> avec toutes les recettes via crateOneRecipe()
+        recipesList.appendChild(createOneRecipe(objectRecipe));
     });
 };
