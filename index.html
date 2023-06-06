@@ -20,15 +20,67 @@
     </header>
     <main class="main-content">
         <div class="input-control">
-            <input type="text" id="search-input" autocomplete="off" 
-            placeholder="Rechercher une recette, un ingrédient, un appareil, un ustensile">
+            <input type="text" id="search-input" autocomplete="off"
+                placeholder="Rechercher une recette, un ingrédient, un appareil, un ustensile">
             <label for="search-input">
                 <img src="./assets/images/search.svg" alt="search icon">
             </label>
         </div>
-        <div class="tags-control">
-            <h2>Ici les boutons Ingrédients, Appareils et Ustensiles</h2>
+
+        <!--Affichage des tags-->
+        <div class="tags-wrapper"></div>
+
+        <!--Les Boutons-->
+        <div class="all-dropdowns-wrapper">
+
+            <button type="button" id="btn-ingredients" class="btn-dropdown">
+                <form id="ingredients-form" class="search-form" role="search" autocomplete="off" novalidate>
+                    <label for="ingredients-search-input">Ingrédients</label>
+                    <input type="text" id="ingredients-search-input" placeholder="Rechercher un ingrédient" />
+                    <span><img src="./assets/images/down-arrow.svg" alt="flêche" aria-hidden="true" /></span>
+                </form>
+                <ul id="ingredients-list" class="hide" aria-labelledby="">
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                </ul>
+            </button>
+
+            <button type="button" id="btn-appareils" class="btn-dropdown">
+                <form id="appareils-form" class="search-form" role="search" autocomplete="off" novalidate>
+                    <label for="appareils-search-input">Appareils</label>
+                    <input type="text" id="appareils-search-input" placeholder="Rechercher un ingrédient" />
+                    <span><img src="./assets/images/down-arrow.svg" alt="flêche" aria-hidden="true" /></span>
+                </form>
+                <ul id="appareils-list" class="hide" aria-labelledby="">
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                </ul>
+            </button>
+
+            <button type="button" id="btn-ustensils" class="btn-dropdown">
+                <form id="ustensils-form" class="search-form" role="search" autocomplete="off" novalidate>
+                    <label for="ustensils-search-input">Ustensils</label>
+                    <input type="text" id="ustensils-search-input" placeholder="Rechercher un ustensil" />
+                    <span><img src="./assets/images/down-arrow.svg" alt="flêche" aria-hidden="true" /></span>
+                </form>
+                <ul id="ustensils-list" class="hide" aria-labelledby="">
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                    <li>lorem</li>
+                </ul>
+            </button>
+
         </div>
+
+        <!---->
         <ul class="recipes-list">
         </ul>
     </main>
