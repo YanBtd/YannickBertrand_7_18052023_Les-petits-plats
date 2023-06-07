@@ -156,6 +156,11 @@ header h1 {
     width: 20px;
 }
 
+#ingredients-list {
+    /* width: 500px; */
+    /* position: absolute; */
+}
+
 #ingredients-list.active-btn,
 #appareils-list.active-btn,
 #ustensils-list.active-btn { 
