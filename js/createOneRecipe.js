@@ -60,7 +60,7 @@ export function createOneRecipe(recipe) {
             </div>
             <div class="recipe-body-bottom">
                 ${RECIPE_INGREDIENTS_WRAPPER.outerHTML}
-                <p class="recipe-description-wrapper">${recipe.description}
+                <p class="text-ellipsis--2 recipe-description-wrapper">${recipe.description}
             </div>
         </div>
     `;

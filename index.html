@@ -16,7 +16,7 @@
         <a href="./index.html">
             <img src="./assets/images/logo.svg" alt="page d'accueil de fisheye" class="logo" />
         </a>
-        <h1>Les petits plats</h1>
+        <h1>***Les petits plats***</h1>
     </header>
     <main class="main-content">
         <div class="input-control">
@@ -33,32 +33,42 @@
         <!--Les Boutons-->
         <div class="all-dropdowns-wrapper">
 
-            <button type="button" id="btn-ingredients" class="btn-dropdown">
-                <form id="ingredients-form" class="search-form" role="search" autocomplete="off" novalidate>
-                    <label for="ingredients-search-input">Ingrédients</label>
-                    <input type="text" id="ingredients-search-input" placeholder="Rechercher un ingrédient" />
-                    <span><img src="./assets/images/down-arrow.svg" alt="flêche" aria-hidden="true" /></span>
+            <div class="dropdown-btn-wrapper" id="ingredients-btn-wrapper">
+                <div class="tag-title-container" id="ingredients-tag-title-container">
+                    <span class="tag-span-title">Ingrédients</span>
+                    <img src="./assets/images/down-arrow.svg" alt="chevron" aria-hidden="true">
+                </div>
+                <form id="ingredients-form" class="search-form" role="search" autocomplete="off" novalidate="novalidate">
+                    <label for="ingredients-search-input" class="visually-hidden">Tag Ingrédients</label>
+                    <input type="text" id="ingredients-search-input" placeholder="Rechercher un ingrédient">
+                    <!--<ul id="ingredients-list" class="hide" aria-labelledby=""></ul>-->
                 </form>
                 <ul id="ingredients-list" class="hide" aria-labelledby=""></ul>
-            </button>
+            </div>
 
-            <button type="button" id="btn-appareils" class="btn-dropdown">
-                <form id="appareils-form" class="search-form" role="search" autocomplete="off" novalidate>
-                    <label for="appareils-search-input">Appareils</label>
-                    <input type="text" id="appareils-search-input" placeholder="Rechercher un ingrédient" />
-                    <span><img src="./assets/images/down-arrow.svg" alt="flêche" aria-hidden="true" /></span>
+            <div class="dropdown-btn-wrapper" id="appareils-btn-wrapper">
+                <div class="tag-title-container" id="appareils-tag-title-container">
+                    <span class="tag-span-title">Appareils</span>
+                    <img src="./assets/images/down-arrow.svg" alt="chevron" aria-hidden="true">
+                </div>
+                <form class="search-form" role="search" autocomplete="off" novalidate>
+                    <label for="appareils-search-input" class="visually-hidden">Tag Appareils</label>
+                    <input type="text" id="appareils-search-input" placeholder="Rechercher un appareil">
                 </form>
                 <ul id="appareils-list" class="hide" aria-labelledby=""></ul>
-            </button>
-
-            <button type="button" id="btn-ustensils" class="btn-dropdown">
-                <form id="ustensils-form" class="search-form" role="search" autocomplete="off" novalidate>
-                    <label for="ustensils-search-input">Ustensils</label>
-                    <input type="text" id="ustensils-search-input" placeholder="Rechercher un ustensil" />
-                    <span><img src="./assets/images/down-arrow.svg" alt="flêche" aria-hidden="true" /></span>
+            </div>
+            
+            <div class="dropdown-btn-wrapper" id="ustensiles-btn-wrapper">
+                <div class="tag-title-container" id="ustensiles-tag-title-container">
+                    <span class="tag-span-title">Ustensiles</span>
+                    <img src="./assets/images/down-arrow.svg" alt="chevron" aria-hidden="true">
+                </div>
+                <form class="search-form" role="search" autocomplete="off" novalidate>
+                    <label for="ustensiles-search-input" class="visually-hidden">Tag Ustensiles</label>
+                    <input type="text" id="ustensiles-search-input" placeholder="Rechercher un ustensile">
                 </form>
                 <ul id="ustensils-list" class="hide" aria-labelledby=""></ul>
-            </button>
+            </div>
 
         </div>
 

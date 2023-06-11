@@ -6,23 +6,93 @@ import { toggleList } from "./toggleList.js";
 // Import de la méthode de création des noms des ingrédients de toutes les recettes
 import { createIngredientsNamesList } from "./createIngredientsNamesList.js";
 
+// Import de la méthode de création des noms des appareils de toutes les recettes
+import { createAppareilsNamesList } from "./createAppareilsNamesList.js";
+
+// Import de la méthode de création des noms des ustensils de toutes les recettes
+import { createUstensilsNamesList } from "./createUstensilsNamesList.js";
+
+// Import de la liste des ingredients uniques
+// import { getUniqueIngredientsNames } from "./getUniqueIngredientsNames.js";
+
+// const allUniqueIngredientsOfAllRecipesArr = getUniqueIngredientsNames();
+
+// console.log(allUniqueIngredientsOfAllRecipesArr);
+
+
+
 export function listeners() {
-    const ingredientsBtn = document.querySelector("#btn-ingredients");
+
+    // Ingredients
+
+    const ingredientsBtn = document.querySelector("#ingredients-btn-wrapper");
     const ingredientsListWrapper = document.querySelector("#ingredients-list");
+    const ingredientsSearchInput = document.querySelector("#ingredients-search-input");
     ingredientsListWrapper.innerHTML = createIngredientsNamesList().innerHTML;
 
-    const appareilsBtn = document.querySelector("#btn-appareils");
+    // console.log(ingredientsListWrapper)
+
+    ingredientsBtn.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        toggleList(ingredientsListWrapper, ingredientsSearchInput);
+    });
+
+
+    const ingredientsList = document.querySelector("#ingredients-list");
+    // console.log(ingredientsList);
+
+    const ingredientItems = ingredientsList.querySelectorAll("li");
+    // console.log(ingredientItems);
+
+    ingredientItems.forEach( li => {
+        li.addEventListener("click", handleClick)
+    })
+
+    function handleClick(evt) {
+        console.log("LI vaut:", evt.target.id);
+    }
+
+
+    // --
+
+    // Appareils
+
+    const appareilsBtn = document.querySelector("#appareils-btn-wrapper");
     const appareilsListWrapper = document.querySelector("#appareils-list");
+    const appareilsSearchInput = document.querySelector("#appareils-search-input");
+    appareilsListWrapper.innerHTML = createAppareilsNamesList().innerHTML;
 
-    const ustensilsBtn = document.querySelector("#btn-ustensils");
-    const ustensilsListWrapper = document.querySelector("#ustensils-list");
+    // console.log(appareilsSearchInput)
 
-    ingredientsBtn.addEventListener("click", () => toggleList(ingredientsListWrapper));
-    ingredientsBtn.addEventListener("blur", () => ingredientsListWrapper.className = "hide");
+    appareilsBtn.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        toggleList(appareilsListWrapper, appareilsSearchInput);
+    });
 
-    appareilsBtn.addEventListener("click", () => toggleList(appareilsListWrapper));
+    // --
 
-    ustensilsBtn.addEventListener("click", () => toggleList(ustensilsListWrapper));
+    // Ustensiles
+
+    const ustensilesBtn = document.querySelector("#ustensiles-btn-wrapper");
+    const ustensilesListWrapper = document.querySelector("#ustensils-list");
+    const ustensilesSearchInput = document.querySelector("#ustensiles-search-input");
+    ustensilesListWrapper.innerHTML = createUstensilsNamesList().innerHTML;
+
+    // console.log(ustensilesSearchInput)
+
+    ustensilesBtn.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        toggleList(ustensilesListWrapper, ustensilesSearchInput);
+    });
+
+    // --
+
+    // ingredientsBtn.addEventListener("blur", (evt) => {
+    //     evt.preventDefault();
+    //     ingredientsListWrapper.className = "hide";
+    //     ingredientsSearchInput.className = "hide";
+    // });
+    
 };
 
 

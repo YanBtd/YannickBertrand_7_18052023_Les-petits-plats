@@ -12,6 +12,7 @@ import { searchForAllParameters } from "./searchForAllParameters.js";
 // Import des écouteurs
 import { listeners } from "./listeners.js";
 
+
 // Récupération du tableau JSON des recettes
 const recipesJsonArr = getRecipesJSON();
 
@@ -23,3 +24,4 @@ searchForAllParameters(getRecipesJSON);
 
 // Appel de listeners() pour gestion des dropdowns
 listeners();
+
