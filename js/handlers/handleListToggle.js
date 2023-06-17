@@ -1,6 +1,6 @@
 'use strict';
 
-export function toggleList(listWrapper, searchInput) {
+export function handleListToggle(listWrapper, searchInput) {
 
     const getClass = listWrapper.getAttribute("class");
    

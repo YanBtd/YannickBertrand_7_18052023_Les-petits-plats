@@ -1,8 +1,8 @@
 'use strict';
 
-import { getRecipesJSON } from "./getRecipesJSON.js";
+// import { getRecipesJSON } from "./getRecipesJSON.js";
 
-export function getUniqueAppareilsNames() {
+export function getUniqueAppliancesNames(getRecipesJSON) {
 
     // Stockage des propriétés appliance des recettes
     const allAppliancePropertiesOfAllRecipesArr = [];

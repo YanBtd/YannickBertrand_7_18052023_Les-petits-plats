@@ -1,11 +1,6 @@
 'use strict';
 
-import { displayAllRecipes } from "./displayAllRecipes.js";
-
-// Pas besoin car envoyé par index.js
-// import { getRecipesJSON } from "./getRecipesJSON.js";
-
-export function searchForAllParameters(getRecipesJSON) {
+export function searchForAllProperties(getRecipesJSON, displayAllRecipes) {
 
     const searchInput = document.querySelector("#search-input");
     
@@ -18,6 +13,8 @@ export function searchForAllParameters(getRecipesJSON) {
     function filterData(e) {
         // On lance la recherche à partir de 3 caractères tapés dans la barre de recherches
         if(e.target.value.length > 2) {
+
+            // on vide la liste des recettes
             const recipesList = document.querySelector(".recipes-list");
             recipesList.textContent = "";
 
@@ -30,6 +27,7 @@ export function searchForAllParameters(getRecipesJSON) {
                 || recipeData.appliance.toLowerCase().includes(searchedString)
                 || recipeData.ustensils.some(el => el.toLowerCase().includes(searchedString)))
             ;
+            console.log(filteredArr);
             displayAllRecipes(filteredArr);
         }
         // Si la barre de recherche est vidée, on réaffiche l'ensemble des recettes

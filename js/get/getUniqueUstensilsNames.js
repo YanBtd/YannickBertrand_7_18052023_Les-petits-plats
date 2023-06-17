@@ -1,8 +1,8 @@
 'use strict';
 
-import { getRecipesJSON } from "./getRecipesJSON.js";
+// import { getRecipesJSON } from "./getRecipesJSON.js";
 
-export function getUniqueUstensilsNames() {
+export function getUniqueUstensilsNames(getRecipesJSON) {
 
     // Stockage de la propriété ustensils de toutes les recipes
     const allUstensilsPropertiesOfAllRecipesArr = [];

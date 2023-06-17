@@ -1,8 +1,8 @@
 'use strict';
 
-import { getRecipesJSON } from "./getRecipesJSON.js";
+// import { getRecipesJSON } from "./getRecipesJSON.js";
 
-export function getUniqueIngredientsNames() {
+export function getUniqueIngredientsNames(getRecipesJSON) {
 
     // Stockage de la propriété ingredients de toutes les recipes
     const allIngredientsPropertiesOfAllRecipesArr = [];
@@ -41,8 +41,8 @@ export function getUniqueIngredientsNames() {
     };
     // Stockage des 121 ingredients uniques après filtrage et tri alphabétique ascendant
     allUniqueIngredientsOfAllRecipesArr = allIngredientsOfAllRecipesArr
-    .filter((x, i) => allIngredientsOfAllRecipesArr.indexOf(x) === i);
-    // .sort((a, b) => a.localeCompare(b, 'fr'));
+        .filter((x, i) => allIngredientsOfAllRecipesArr.indexOf(x) === i)
+        .sort((a, b) => a.localeCompare(b, 'fr'));
     // On retourne le tableau des ingredients uniques
     // console.log(allIngredientsOfAllRecipesArr)
     // console.log(allUniqueIngredientsOfAllRecipesArr)

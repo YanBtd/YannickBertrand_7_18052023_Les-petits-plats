@@ -1,7 +1,7 @@
 'use strict';
 
 // Import de la méthode de création d'une recette
-import { createOneRecipe } from "./createOneRecipe.js";
+import { createOneRecipe } from "../create/createOneRecipe.js";
 
 // Création de la liste <ul> des recettes
 export function displayAllRecipes(recipesJsonArr) {
