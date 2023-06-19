@@ -1,6 +1,10 @@
 'use strict';
 
-export function ustensilsListeners(createUstensilsNamesList, getRecipesJSON, handleClick, toggleList, handleInput) {
+import { createOneTag } from "../create/createOneTag.js";
+
+import { displayOneTag } from "../display/displayOneTag.js"
+
+export function ustensilsListeners(createUstensilsNamesList, getRecipesJSON, handleClickOnTag, handleListToggle, handleInput) {
 
     // Ustensils
 
@@ -12,6 +16,16 @@ export function ustensilsListeners(createUstensilsNamesList, getRecipesJSON, han
 
     ustensilsForm.addEventListener("submit", function (event) {
         event.preventDefault();
+
+        // On stocke la valeur du nom du tag
+        const tagNameValue = ustensilsSearchInput.value;
+        console.log(tagNameValue);
+
+        const propertyName = "ustensil";
+
+        // On affiche le boutton tag après création via createOneTag()
+        displayOneTag(createOneTag(tagNameValue, propertyName));
+
         ustensilsListWrapper.className = "hide";
         ustensilsSearchInput.className = "hide";
         ustensilsSearchInput.value = "";
@@ -20,7 +34,18 @@ export function ustensilsListeners(createUstensilsNamesList, getRecipesJSON, han
     // console.log(ustensilsSearchInput);
 
     ustensilsBtn.addEventListener("click", () => {
-        toggleList(ustensilsListWrapper, ustensilsSearchInput);
+
+        const ingredientsListWrapper = document.querySelector("#ingredients-list");
+        ingredientsListWrapper.className = "hide";
+        const ingredientsSearchInput = document.querySelector("#ingredients-search-input");
+        ingredientsSearchInput.className = "hide";
+
+        const appliancesListWrapper = document.querySelector("#appliances-list");
+        appliancesListWrapper.className = "hide";
+        const appliancesSearchInput = document.querySelector("#appliances-search-input");
+        appliancesSearchInput.className = "hide";
+
+        handleListToggle(ustensilsListWrapper, ustensilsSearchInput);
     });
 
     const ustensilpropertyName = "ustensil";
@@ -29,6 +54,6 @@ export function ustensilsListeners(createUstensilsNamesList, getRecipesJSON, han
     const ustensilsItems = ustensilsListWrapper.querySelectorAll("button");
 
     ustensilsItems.forEach(li => {
-        li.addEventListener("click", (evt) => handleClick(evt, getRecipesJSON));
+        li.addEventListener("click", (evt) => handleClickOnTag(evt, getRecipesJSON));
     })
 };

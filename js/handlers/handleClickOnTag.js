@@ -4,9 +4,13 @@ import { searchRecipeByPropertyName } from "../search/searchRecipeByPropertyName
 
 import { displayAllRecipes } from "../display/displayAllRecipes.js";
 
+import { createOneTag } from "../create/createOneTag.js";
+
+import { displayOneTag } from "../display/displayOneTag.js"
+
 // Gestion du clic sur un tag
 
-export function handleClick(evt, getRecipesJSON) {
+export function handleClickOnTag(evt, getRecipesJSON) {
 
     // Récupération du nom du lien
     const tagName = evt.target.id;
@@ -25,4 +29,6 @@ export function handleClick(evt, getRecipesJSON) {
 
     // Affichage des recettes filtrées
     displayAllRecipes(filteredArr)
+
+    displayOneTag(createOneTag(tagName, propertyName));
 };

@@ -102,6 +102,29 @@ header h1 {
     margin-bottom: 20px;
 }
 
+.tag {
+    position: relative;
+    width: 80px;
+    height:50px;
+    background-color: #d04f4f;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.tag .tag-name {
+    background-color: aquamarine;
+} 
+
+.tag .close-tag {
+    background-color: #333;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
 .all-dropdowns-wrapper {
     /* background-color: aqua; */
     display: flex;
