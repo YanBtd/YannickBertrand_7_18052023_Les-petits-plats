@@ -23,4 +23,3 @@ searchForAllProperties(getRecipesJSON, displayAllRecipes);
 
 // Appel de listeners() pour gestion des dropdowns
 globalListeners(getRecipesJSON);
-

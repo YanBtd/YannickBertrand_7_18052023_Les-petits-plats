@@ -5,26 +5,27 @@ import { getUniqueUstensilsNames } from "../get/getUniqueUstensilsNames.js";
 export function createUstensilsNamesList(getRecipesJSON) {
 
     const allUniqueUstensilsOfAllRecipesArr = getUniqueUstensilsNames(getRecipesJSON);
+    // console.log(allUniqueUstensilsOfAllRecipesArr);
 
-    const USTENSILS_NAMES_WRAPPER = document.querySelector("#ustensils-list");
+    const USTENSILS_NAMES_LIST = document.querySelector("#ustensils-list");
 
     for (const oneIteratedUstensilName of allUniqueUstensilsOfAllRecipesArr) {
 
-        const ustensilNameLi = document.createElement("button");
-        ustensilNameLi.type = "button";
+        const ustensilNameLi = document.createElement("li");
         ustensilNameLi.className = "ustensil-name-li";
-        // ustensilNameLi.value = oneIteratedUstensilName;
         ustensilNameLi.id = oneIteratedUstensilName;
+        ustensilNameLi.tabIndex = 0;
         ustensilNameLi.dataset.propertyName = "ustensil";
 
-        // console.log(ustensilNameLi.dataset.propertyName);
-
-        // console.log("ustensil:", ustensilNameLi);
-
         // const templateLi = `<span class = "ustensil-span-name">${oneIteratedUstensilName}</span>`;
+
         const templateLi = oneIteratedUstensilName;
         ustensilNameLi.innerHTML = templateLi;
-        USTENSILS_NAMES_WRAPPER.appendChild(ustensilNameLi);
+        USTENSILS_NAMES_LIST.appendChild(ustensilNameLi);
     }
-    return USTENSILS_NAMES_WRAPPER;
+    // console.log(USTENSILS_NAMES_LIST.outerHTML);
+    // console.log(USTENSILS_NAMES_LIST.innerHTML);
+    // console.log(USTENSILS_NAMES_LIST);
+
+    return USTENSILS_NAMES_LIST;
 };

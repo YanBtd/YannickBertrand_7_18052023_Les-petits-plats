@@ -1,18 +1,47 @@
 'use strict';
 
-import { createOneTag } from "../create/createOneTag.js";
+// Import de la fonction de création des noms des appareils de toutes les recettes
+import { createAppliancesNamesList } from "../create/createAppliancesNamesList.js";
 
-import { displayOneTag } from "../display/displayOneTag.js"
+import { getUniqueIngredientsNames } from "../get/getUniqueIngredientsNames.js";
 
-export function appliancesListeners(createAppliancesNamesList, getRecipesJSON, handleClickOnTag, handleListToggle, handleInput) {
+import { createFilteredByTagNameIngredientsList } from "../create/createFilteredByTagNameIngredientsList.js";
 
-    // Appliances
+import { getUniqueAppliancesNames } from "../get/getUniqueAppliancesNames.js";
+
+import { createFilteredByTagNameAppliancesList } from "../create/createFilteredByTagNameAppliancesList.js";
+
+import { getUniqueUstensilsNames } from "../get/getUniqueUstensilsNames.js";
+
+import { createFilteredByTagNameUstensilsList } from "../create/createFilteredByTagNameUstensilsList.js";
+
+export function appliancesListeners(
+
+    getRecipesJSON, handleClickOnTag, handleListToggle, handleInput,
+    displayAllRecipes, searchRecipeByTagNameAndPropertyName, createOneTag, displayOneTag,
+    searchItemsByTagName) {
 
     const appliancesBtn = document.querySelector("#appliances-btn-wrapper");
     const appliancesListWrapper = document.querySelector("#appliances-list");
     const appliancesSearchInput = document.querySelector("#appliances-search-input");
     const appliancesForm = document.querySelector("#appliances-form");
-    appliancesListWrapper.innerHTML = createAppliancesNamesList(getRecipesJSON).innerHTML;
+    const propertyName = "appliance";
+
+    // Récupération du prototype de la liste des appareils
+    const APPLIANCES_NAMES_LIST = createAppliancesNamesList(getRecipesJSON);
+    // console.log("createAppliancesNamesList(getRecipesJSON) returns:", APPLIANCES_NAMES_LIST);
+
+    // Affichage de la liste HTML des appareils
+    appliancesListWrapper.innerHTML = APPLIANCES_NAMES_LIST.innerHTML;
+
+
+    appliancesBtn.addEventListener("click", () => {
+        // On vide l'input de son contenu
+        appliancesSearchInput.value = "";
+        // Ouverture/Fermeture + Affichage/Masquage de la liste et de l'input du formulaire
+        handleListToggle(appliancesListWrapper, appliancesSearchInput, propertyName);
+    });
+
 
     appliancesForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -21,39 +50,31 @@ export function appliancesListeners(createAppliancesNamesList, getRecipesJSON, h
         const tagNameValue = appliancesSearchInput.value;
         console.log(tagNameValue);
 
-        const propertyName = "appliance";
-
         // On affiche le boutton tag après création via createOneTag()
         displayOneTag(createOneTag(tagNameValue, propertyName));
 
+        // On masque la liste des appareils et l'input du formulaire
         appliancesListWrapper.className = "hide";
         appliancesSearchInput.className = "hide";
-        appliancesSearchInput.value = "";
     });
 
-    // console.log(appliancesSearchInput);
-
-    appliancesBtn.addEventListener("click", () => {
-
-        const ingredientsListWrapper = document.querySelector("#ingredients-list");
-        ingredientsListWrapper.className = "hide";
-        const ingredientsSearchInput = document.querySelector("#ingredients-search-input");
-        ingredientsSearchInput.className = "hide";
-
-        const ustensilsListWrapper = document.querySelector("#ustensils-list");
-        ustensilsListWrapper.className = "hide";
-        const ustensilsSearchInput = document.querySelector("#ustensils-search-input");
-        ustensilsSearchInput.className = "hide";
-
-        handleListToggle(appliancesListWrapper, appliancesSearchInput);
+    
+    appliancesSearchInput.addEventListener("input", (evt) => {
+        handleInput(evt, propertyName, getRecipesJSON, 
+            handleClickOnTag, searchRecipeByTagNameAndPropertyName,
+            displayAllRecipes, createOneTag, displayOneTag, searchItemsByTagName,
+            createFilteredByTagNameIngredientsList, getUniqueIngredientsNames,
+            createFilteredByTagNameAppliancesList, getUniqueAppliancesNames,
+            createFilteredByTagNameUstensilsList, getUniqueUstensilsNames);
     });
 
-    const appliancepropertyName = "appliance";
-    appliancesSearchInput.addEventListener("input", (evt) => handleInput(evt, appliancepropertyName, getRecipesJSON));
 
-    const appliancesItems = appliancesListWrapper.querySelectorAll("li");
+    const appliancesItemsNodeList = appliancesListWrapper.querySelectorAll("li");
+    // console.log("appliancesItemsNodeList vaut:", appliancesItemsNodeList);
 
-    appliancesItems.forEach(li => {
-        li.addEventListener("click", (evt) => handleClickOnTag(evt, getRecipesJSON));
-    })
+    appliancesItemsNodeList.forEach(li => {
+        li.addEventListener("click", (evt) => handleClickOnTag(evt, getRecipesJSON, 
+            searchRecipeByTagNameAndPropertyName,
+            displayAllRecipes, createOneTag, displayOneTag));
+    });
 };

@@ -6,10 +6,6 @@ export function searchForAllProperties(getRecipesJSON, displayAllRecipes) {
     
     searchInput.addEventListener("input", filterData);
 
-    // searchInput.addEventListener("blur", (event) => {
-    //     event.target.value = "";
-    // });
-
     function filterData(e) {
         // On lance la recherche à partir de 3 caractères tapés dans la barre de recherches
         if(e.target.value.length > 2) {

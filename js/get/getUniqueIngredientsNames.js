@@ -1,13 +1,11 @@
 'use strict';
 
-// import { getRecipesJSON } from "./getRecipesJSON.js";
-
 export function getUniqueIngredientsNames(getRecipesJSON) {
 
     // Stockage de la propriété ingredients de toutes les recipes
     const allIngredientsPropertiesOfAllRecipesArr = [];
 
-    // Stockage de la propriété ingredient pour tous les ingredients de toutes les recipes
+    // Stockage de la propriété ingredient pour les 254 ingredients de toutes les recipes
     const allIngredientsOfAllRecipesArr = [];
 
     // Stockage des ingrédients uniques triés
@@ -16,9 +14,7 @@ export function getUniqueIngredientsNames(getRecipesJSON) {
     // On ajoute chacune des 50 propriétés ingredients au tableau des propriétés
     getRecipesJSON().forEach(recipe =>
         allIngredientsPropertiesOfAllRecipesArr.push(recipe.ingredients)
-    )
-
-    // console.log(allIngredientsPropertiesOfAllRecipesArr)
+    );
 
     // Pour la propriété ingredients de chaque recipe
     for (const oneIteratedIngredientsProperty of allIngredientsPropertiesOfAllRecipesArr) {
@@ -28,23 +24,16 @@ export function getUniqueIngredientsNames(getRecipesJSON) {
 
             // On ajoute sa propriété ingredient insensible à la casse au tableau des 254 ingrédients
             allIngredientsOfAllRecipesArr.push(oneIteratedObjectIngredient.ingredient.toLowerCase());
-
-            // // Stockage des 121 ingredients uniques après filtrage et tri alphabétique ascendant
-            // allUniqueIngredientsOfAllRecipesArr = allIngredientsOfAllRecipesArr
-            //     .filter((x, i) => allIngredientsOfAllRecipesArr.indexOf(x) === i);
-            //     // .sort((a, b) => a.localeCompare(b, 'fr'));
         };
-        // Stockage des 121 ingredients uniques après filtrage et tri alphabétique ascendant
-        // allUniqueIngredientsOfAllRecipesArr = allIngredientsOfAllRecipesArr
-        // .filter((x, i) => allIngredientsOfAllRecipesArr.indexOf(x) === i);
-        // .sort((a, b) => a.localeCompare(b, 'fr'));
     };
+
     // Stockage des 121 ingredients uniques après filtrage et tri alphabétique ascendant
     allUniqueIngredientsOfAllRecipesArr = allIngredientsOfAllRecipesArr
-        .filter((x, i) => allIngredientsOfAllRecipesArr.indexOf(x) === i)
-        .sort((a, b) => a.localeCompare(b, 'fr'));
-    // On retourne le tableau des ingredients uniques
-    // console.log(allIngredientsOfAllRecipesArr)
-    // console.log(allUniqueIngredientsOfAllRecipesArr)
+    .filter((x, i) => allIngredientsOfAllRecipesArr.indexOf(x) === i)
+    .sort((a, b) => a.localeCompare(b, 'fr'));
+        
+    // On retourne le tableau des 121 ingredients uniques
+    // console.log(allIngredientsOfAllRecipesArr);
+    // console.log(allUniqueIngredientsOfAllRecipesArr);
     return allUniqueIngredientsOfAllRecipesArr;
 };

@@ -1,26 +1,24 @@
 'use strict';
 
-// import { getRecipesJSON } from "./getRecipesJSON.js";
-
 export function getUniqueAppliancesNames(getRecipesJSON) {
 
-    // Stockage des propriétés appliance des recettes
+    // Stockage de la propriété appliance des recettes
     const allAppliancePropertiesOfAllRecipesArr = [];
 
-    // Stockage des appareils uniques triés
+    // Stockage des appliances uniques triés
     let allUniqueAppliancesOfAllRecipesArr = [];
 
-    // On ajoute chaque propriété appliance insensible à la casse au tableau des 50 appliances
+    // On ajoute chacune des 50 propriétés appliance insensible à la casse au tableau des propriétés
     getRecipesJSON().forEach(recipe =>
         allAppliancePropertiesOfAllRecipesArr.push(recipe.appliance.toLowerCase())
-    )
+    );
 
     // Stockage des 11 appliances uniques après filtrage des doublons
     allUniqueAppliancesOfAllRecipesArr = allAppliancePropertiesOfAllRecipesArr
-        .filter((x, i) => allAppliancePropertiesOfAllRecipesArr.indexOf(x) === i);
-    // .sort((a, b) => a.localeCompare(b, 'fr'));
+    .filter((x, i) => allAppliancePropertiesOfAllRecipesArr.indexOf(x) === i)
+    .sort((a, b) => a.localeCompare(b, 'fr'));
 
-    // On retourne le tableau des appliances uniques
+    // On retourne le tableau des 11 appliances uniques
     // console.log(allAppliancePropertiesOfAllRecipesArr);
     // console.log(allUniqueAppliancesOfAllRecipesArr);
     return allUniqueAppliancesOfAllRecipesArr;

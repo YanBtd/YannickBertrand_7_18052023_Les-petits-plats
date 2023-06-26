@@ -1,16 +1,9 @@
 'use strict';
 
-import { searchRecipeByPropertyName } from "../search/searchRecipeByPropertyName.js";
-
-import { displayAllRecipes } from "../display/displayAllRecipes.js";
-
-import { createOneTag } from "../create/createOneTag.js";
-
-import { displayOneTag } from "../display/displayOneTag.js"
-
 // Gestion du clic sur un tag
 
-export function handleClickOnTag(evt, getRecipesJSON) {
+export function handleClickOnTag(evt, getRecipesJSON, searchRecipeByTagNameAndPropertyName,
+    displayAllRecipes, createOneTag, displayOneTag) {
 
     // Récupération du nom du lien
     const tagName = evt.target.id;
@@ -21,14 +14,15 @@ export function handleClickOnTag(evt, getRecipesJSON) {
     console.log("propertyName vaut:", propertyName);
 
     // Appel de la fonction de tri et récupération des recettes filtrées
-    const filteredArr = searchRecipeByPropertyName(tagName, propertyName, getRecipesJSON);
+    const filteredRecipeByTagNameAndPropertyNameArr = searchRecipeByTagNameAndPropertyName(tagName, propertyName, getRecipesJSON);
 
     // on vide la liste des recettes pour affichées les nouvelles filtrées
     const recipesList = document.querySelector(".recipes-list");
     recipesList.textContent = "";
 
     // Affichage des recettes filtrées
-    displayAllRecipes(filteredArr)
+    displayAllRecipes(filteredRecipeByTagNameAndPropertyNameArr)
 
+    // On affiche le boutton tag après création via createOneTag()
     displayOneTag(createOneTag(tagName, propertyName));
 };

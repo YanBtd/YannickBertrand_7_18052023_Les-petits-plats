@@ -2,8 +2,6 @@
 
 export function createOneTag(tagName, propertyName) {
 
-    console.log(propertyName)
-
     const TAG_DIV = document.createElement('div');
 
     if(propertyName == "ingredient") {
@@ -17,14 +15,13 @@ export function createOneTag(tagName, propertyName) {
     TAG_DIV.className = "tag";
 
     const templateTag = `
-        <span class = "tag-name">${tagName}</span>
-        <span class = "close-tag">x</span>
+        <span id="${tagName}" class="tag-name" data-property-name="${propertyName}">${tagName}</span>
+        <span class="close-tag">x</span>
     `;
     TAG_DIV.innerHTML = templateTag;
-    // TAG_DIV.innerHTML = tagName;
 
-    console.log(TAG_DIV.innerHTML);
-    console.log(TAG_DIV.outerHTML);
+    // console.log(TAG_DIV.innerHTML);
+    // console.log(TAG_DIV.outerHTML);
     // console.log(TAG_DIV);
 
     return TAG_DIV;
