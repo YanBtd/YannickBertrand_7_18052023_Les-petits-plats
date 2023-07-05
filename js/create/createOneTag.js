@@ -2,27 +2,28 @@
 
 export function createOneTag(tagName, propertyName) {
 
-    const TAG_DIV = document.createElement('div');
+    const TAG_LI = document.createElement('li');
+    TAG_LI.className = "tag-li";
+    TAG_LI.setAttribute("id", tagName);
+    TAG_LI.setAttribute("data-property-name", propertyName);
 
     if(propertyName == "ingredient") {
-        TAG_DIV.style.backgroundColor = "rgb(0, 34, 255)";
+        TAG_LI.style.backgroundColor = "rgb(0, 34, 255)";
     } else if(propertyName == "appliance") {
-        TAG_DIV.style.backgroundColor = "green";
+        TAG_LI.style.backgroundColor = "green";
     }else {
-        TAG_DIV.style.backgroundColor = "rgb(255, 72, 0)";
+        TAG_LI.style.backgroundColor = "rgb(255, 72, 0)";
     }
 
-    TAG_DIV.className = "tag";
-
     const templateTag = `
-        <span id="${tagName}" class="tag-name" data-property-name="${propertyName}">${tagName}</span>
-        <span class="close-tag">x</span>
+        <span id="${tagName}" class="tag-span" data-property-name="${propertyName}">${tagName}</span>
+        <span class="close-tag" aria-hidden="true">x</span>
     `;
-    TAG_DIV.innerHTML = templateTag;
+    TAG_LI.innerHTML = templateTag;
 
-    // console.log(TAG_DIV.innerHTML);
-    // console.log(TAG_DIV.outerHTML);
-    // console.log(TAG_DIV);
+    // console.log(TAG_LI.innerHTML);
+    // console.log(TAG_LI.outerHTML);
+    // console.log(TAG_LI);
 
-    return TAG_DIV;
+    return TAG_LI;
 };

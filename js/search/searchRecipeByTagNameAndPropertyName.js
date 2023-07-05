@@ -1,8 +1,11 @@
 'use strict';
 
+import { getRecipesJSON } from "../get/getRecipesJSON.js";
+
 // Gestion de la recherche des recettes pour un tag et sa propriété
 
-export function searchRecipeByTagNameAndPropertyName(tagName, propertyName, getRecipesJSON) {
+// export function searchRecipeByTagNameAndPropertyName(tagName, propertyName, getRecipesJSON) {
+export function searchRecipeByTagNameAndPropertyName(tagName, propertyName) {
 
     // Tableau de stockage des recettes filtrées par nom de tag et nom propriété
     let filteredArrByTagNameAndPropertyName = [];
@@ -12,21 +15,21 @@ export function searchRecipeByTagNameAndPropertyName(tagName, propertyName, getR
             recipeData =>
                 recipeData.ingredients.some(el => el.ingredient.toLowerCase().includes(tagName)));
         ;
-        console.log(filteredArrByTagNameAndPropertyName);
+        // console.log(filteredArrByTagNameAndPropertyName);
 
     } else if (propertyName === "appliance") {
         filteredArrByTagNameAndPropertyName = getRecipesJSON().filter(
             recipeData =>
                 recipeData.appliance.toLowerCase().includes(tagName));
         ;
-        console.log(filteredArrByTagNameAndPropertyName);
+        // console.log(filteredArrByTagNameAndPropertyName);
 
     } else {
         filteredArrByTagNameAndPropertyName = getRecipesJSON().filter(
             recipeData =>
                 recipeData.ustensils.some(el => el.toLowerCase().includes(tagName)));
         ;
-        console.log(filteredArrByTagNameAndPropertyName);
+        // console.log(filteredArrByTagNameAndPropertyName);
     }
     return filteredArrByTagNameAndPropertyName;
 };

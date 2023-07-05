@@ -102,7 +102,7 @@ header h1 {
     margin-bottom: 20px;
 }
 
-.tag {
+.tag-li {
     position: relative;
     display: flex;
     justify-content: center;
@@ -120,18 +120,18 @@ header h1 {
     cursor: pointer;
 }
 
-.tag .tag-name {
+.tag-li .tag-span {
     color: white;
     display: block;
     text-align: center;
     line-height: 1;
 } 
 
-.tag .close-tag {
+.tag-li .close-tag {
     position: absolute;
     top: -5px;
     right: 4px;
-    color: antiquewhite;
+    color: white;
 }
 
 .all-dropdowns-wrapper {
@@ -299,7 +299,7 @@ form input {
 }
 
 .recipe-body-bottom {
-    background-color: bisque;
+    /* background-color: bisque; */
     display: flex;
     justify-content: space-between;
 }

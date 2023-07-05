@@ -17,6 +17,6 @@ export function searchItemsByTagName(tagNameValue, ingredientsItemsArr, applianc
             item => item.toLowerCase().includes(tagNameValue)
         );
     }
-    // console.log(filteredItemsByTagNameArr);
+    console.log(filteredItemsByTagNameArr);
     return filteredItemsByTagNameArr;
 };

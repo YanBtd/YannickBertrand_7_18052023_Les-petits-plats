@@ -17,7 +17,7 @@ import { createFilteredByTagNameUstensilsList } from "../create/createFilteredBy
 
 export function ingredientsListeners(
 
-    getRecipesJSON, handleClickOnTag, handleListToggle, handleInput,
+    getRecipesJSON, handleClickOnTagsList, handleListToggle, handleInput,
     displayAllRecipes, searchRecipeByTagNameAndPropertyName, createOneTag, displayOneTag,
     searchItemsByTagName) {
 
@@ -60,8 +60,8 @@ export function ingredientsListeners(
 
 
     ingredientsSearchInput.addEventListener("input", (evt) => {
-        handleInput(evt, propertyName, getRecipesJSON, 
-            handleClickOnTag, searchRecipeByTagNameAndPropertyName,
+        handleInput(evt, propertyName, getRecipesJSON,
+            handleClickOnTagsList, searchRecipeByTagNameAndPropertyName,
             displayAllRecipes, createOneTag, displayOneTag, searchItemsByTagName,
             createFilteredByTagNameIngredientsList, getUniqueIngredientsNames,
             createFilteredByTagNameAppliancesList, getUniqueAppliancesNames,
@@ -73,8 +73,12 @@ export function ingredientsListeners(
     // console.log("ingredientsItemsNodeList vaut:", ingredientsItemsNodeList);
 
     ingredientsItemsNodeList.forEach(li => {
-        li.addEventListener("click", (evt) => handleClickOnTag(evt, getRecipesJSON, 
-            searchRecipeByTagNameAndPropertyName,
-            displayAllRecipes, createOneTag, displayOneTag));
+        
+        li.addEventListener("click", (evt) => {
+
+            console.log("ingredientsListeners dit event vaut:", evt);
+            handleClickOnTagsList(evt, getRecipesJSON, searchRecipeByTagNameAndPropertyName,
+                displayAllRecipes, createOneTag, displayOneTag);
+        });
     });
 };

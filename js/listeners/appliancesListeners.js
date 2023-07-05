@@ -17,7 +17,7 @@ import { createFilteredByTagNameUstensilsList } from "../create/createFilteredBy
 
 export function appliancesListeners(
 
-    getRecipesJSON, handleClickOnTag, handleListToggle, handleInput,
+    getRecipesJSON, handleClickOnTagsList, handleListToggle, handleInput,
     displayAllRecipes, searchRecipeByTagNameAndPropertyName, createOneTag, displayOneTag,
     searchItemsByTagName) {
 
@@ -58,10 +58,10 @@ export function appliancesListeners(
         appliancesSearchInput.className = "hide";
     });
 
-    
+
     appliancesSearchInput.addEventListener("input", (evt) => {
-        handleInput(evt, propertyName, getRecipesJSON, 
-            handleClickOnTag, searchRecipeByTagNameAndPropertyName,
+        handleInput(evt, propertyName, getRecipesJSON,
+            handleClickOnTagsList, searchRecipeByTagNameAndPropertyName,
             displayAllRecipes, createOneTag, displayOneTag, searchItemsByTagName,
             createFilteredByTagNameIngredientsList, getUniqueIngredientsNames,
             createFilteredByTagNameAppliancesList, getUniqueAppliancesNames,
@@ -73,8 +73,12 @@ export function appliancesListeners(
     // console.log("appliancesItemsNodeList vaut:", appliancesItemsNodeList);
 
     appliancesItemsNodeList.forEach(li => {
-        li.addEventListener("click", (evt) => handleClickOnTag(evt, getRecipesJSON, 
-            searchRecipeByTagNameAndPropertyName,
-            displayAllRecipes, createOneTag, displayOneTag));
+
+        li.addEventListener("click", (evt) => {
+
+            console.log("appliancesListeners dit event vaut:", evt);
+            handleClickOnTagsList(evt, getRecipesJSON, searchRecipeByTagNameAndPropertyName,
+                displayAllRecipes, createOneTag, displayOneTag);
+        });
     });
 };

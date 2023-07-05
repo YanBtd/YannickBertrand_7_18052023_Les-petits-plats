@@ -7,7 +7,7 @@ import { handleListToggle } from "../handlers/handleListToggle.js";
 import { handleInput } from "../handlers/handleInput.js";
 
 // Import de la fonction de gestion du clic sur un tag
-import { handleClickOnTag } from "../handlers/handleClickOnTag.js";
+import { handleClickOnTagsList } from "../handlers/handleClickOnTagsList.js";
 
 // Import des listeners du tag Ingédients
 import { ingredientsListeners } from "./ingredientsListeners.js";
@@ -36,17 +36,17 @@ import { searchItemsByTagName } from "../search/searchItemsByTagName.js";
 
 export function globalListeners(getRecipesJSON) {
 
-    ingredientsListeners(getRecipesJSON, handleClickOnTag, 
+    ingredientsListeners(getRecipesJSON, handleClickOnTagsList, 
         handleListToggle, handleInput, displayAllRecipes, searchRecipeByTagNameAndPropertyName,
         createOneTag, displayOneTag, searchItemsByTagName, 
     );
 
-    appliancesListeners(getRecipesJSON, handleClickOnTag, 
+    appliancesListeners(getRecipesJSON, handleClickOnTagsList, 
         handleListToggle, handleInput, displayAllRecipes, searchRecipeByTagNameAndPropertyName,
         createOneTag, displayOneTag, searchItemsByTagName,
     );
 
-    ustensilsListeners(getRecipesJSON, handleClickOnTag, 
+    ustensilsListeners(getRecipesJSON, handleClickOnTagsList, 
         handleListToggle, handleInput, displayAllRecipes, searchRecipeByTagNameAndPropertyName,
         createOneTag, displayOneTag, searchItemsByTagName,
     );

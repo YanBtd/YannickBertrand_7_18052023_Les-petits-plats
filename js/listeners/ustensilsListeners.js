@@ -17,7 +17,7 @@ import { createFilteredByTagNameUstensilsList } from "../create/createFilteredBy
 
 export function ustensilsListeners(
 
-    getRecipesJSON, handleClickOnTag, handleListToggle, handleInput,
+    getRecipesJSON, handleClickOnTagsList, handleListToggle, handleInput,
     displayAllRecipes, searchRecipeByTagNameAndPropertyName, createOneTag, displayOneTag,
     searchItemsByTagName) {
 
@@ -60,21 +60,25 @@ export function ustensilsListeners(
 
 
     ustensilsSearchInput.addEventListener("input", (evt) => {
-        handleInput(evt, propertyName, getRecipesJSON, 
-            handleClickOnTag, searchRecipeByTagNameAndPropertyName,
+        handleInput(evt, propertyName, getRecipesJSON,
+            handleClickOnTagsList, searchRecipeByTagNameAndPropertyName,
             displayAllRecipes, createOneTag, displayOneTag, searchItemsByTagName,
             createFilteredByTagNameIngredientsList, getUniqueIngredientsNames,
             createFilteredByTagNameAppliancesList, getUniqueAppliancesNames,
             createFilteredByTagNameUstensilsList, getUniqueUstensilsNames);
     });
 
-    
+
     const ustensilsItemsNodeList = ustensilsListWrapper.querySelectorAll("li");
     // console.log("ustensilsItemsNodeList vaut:", ustensilsItemsNodeList);
 
     ustensilsItemsNodeList.forEach(li => {
-        li.addEventListener("click", (evt) => handleClickOnTag(evt, getRecipesJSON, 
-            searchRecipeByTagNameAndPropertyName,
-            displayAllRecipes, createOneTag, displayOneTag));
-    })
+
+        li.addEventListener("click", (evt) => {
+
+            console.log("ustensilsListeners dit event vaut:", evt);
+            handleClickOnTagsList(evt, getRecipesJSON, searchRecipeByTagNameAndPropertyName,
+                displayAllRecipes, createOneTag, displayOneTag);
+        });
+    });
 };

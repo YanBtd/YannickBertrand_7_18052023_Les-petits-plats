@@ -14,6 +14,7 @@ import { globalListeners } from "./listeners/globalListeners.js";
 
 // Récupération du tableau JSON des recettes
 const recipesJsonArr = getRecipesJSON();
+// console.log(recipesJsonArr);
 
 // Appel de displayAllRecipes() pour affichage des recettes
 displayAllRecipes(recipesJsonArr);

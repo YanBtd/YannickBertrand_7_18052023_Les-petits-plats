@@ -1,5 +1,7 @@
 'use strict';
 
+import { tagFactory } from "../factories/tagFactory.js";
+
 // Gestion d'un tag passé à l'input
 
 export function handleInput(evt, propertyName, getRecipesJSON, handleClickOnTag, 
@@ -11,6 +13,9 @@ export function handleInput(evt, propertyName, getRecipesJSON, handleClickOnTag,
 
     console.log("Bienvenue dans l'input !");
     console.log("propertyName passé par le Listener vaut:", propertyName);
+
+    const tagName = evt.target.value;
+    console.log("tagName vaut:", tagName);
 
     const recipesList = document.querySelector(".recipes-list");
     recipesList.textContent = "";

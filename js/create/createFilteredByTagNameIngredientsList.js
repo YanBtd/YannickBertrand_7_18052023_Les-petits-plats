@@ -18,10 +18,12 @@ export function createFilteredByTagNameIngredientsList(getUniqueIngredientsNames
     console.log("searchItemsByTagName(tagNameValue, ingredientsItemsArr) returns:", filteredItemsByTagNameArr);
 
     for (const oneIteratedIngredientName of filteredItemsByTagNameArr) {
+
         const ingredientNameLi = document.createElement("li");
         ingredientNameLi.className = "ingredient-name-li";
         ingredientNameLi.id = oneIteratedIngredientName;
         ingredientNameLi.dataset.propertyName = "ingredient";
+        
         const templateLi = oneIteratedIngredientName;
         ingredientNameLi.innerHTML = templateLi;
         FILTERED_INGREDIENTS_LIST.appendChild(ingredientNameLi);
