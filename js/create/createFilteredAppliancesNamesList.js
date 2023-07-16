@@ -1,31 +1,31 @@
 'use strict';
 
-import { getIngredientsListOfAllFilteredRecipes } from "../get/getIngredientsListOfAllFilteredRecipes.js";
+import { getAppliancesListOfAllFilteredRecipes } from "../get/getAppliancesListOfAllFilteredRecipes.js";
 
-export function createFilteredAppliancesNamesList() {
+export function createFilteredAppliancesNamesList(getRecipesJSON) {
 
-    const allUniqueRecipesIngredientsTxtNamesArr = getIngredientsListOfAllFilteredRecipes();
+    const allUniqueRecipesAppliancesTxtNamesArr = getAppliancesListOfAllFilteredRecipes(getRecipesJSON);
 
-    const FILTERED_INGREDIENTS_NAMES_LIST = document.querySelector("#appliances-list");
+    const FILTERED_APPLIANCES_NAMES_LIST = document.querySelector("#appliances-list");
 
-    // on vide la liste des ingrédients pour afficher les nouveaux
-    FILTERED_INGREDIENTS_NAMES_LIST.textContent = "";
+    // on vide la liste des appareils pour afficher les nouveaux
+    FILTERED_APPLIANCES_NAMES_LIST.textContent = "";
 
-    for (const oneIteratedIngredientName of allUniqueRecipesIngredientsTxtNamesArr) {
+    for (const oneIteratedApplianceName of allUniqueRecipesAppliancesTxtNamesArr) {
 
-        const ingredientNameLi = document.createElement("li");
-        ingredientNameLi.className = "appliance-name-li";
-        ingredientNameLi.id = oneIteratedIngredientName;
-        ingredientNameLi.tabIndex = 0;
-        ingredientNameLi.dataset.propertyName = "appliance";
+        const applianceNameLi = document.createElement("li");
+        applianceNameLi.className = "appliance-name-li";
+        applianceNameLi.id = oneIteratedApplianceName;
+        applianceNameLi.tabIndex = 0;
+        applianceNameLi.dataset.propertyName = "appliance";
 
-        // const templateLi = `<span class = "ingredient-span-name">${oneIteratedIngredientName}</span>`;
+        // const templateLi = `<span class = "ingredient-span-name">${oneIteratedApplianceName}</span>`;
 
-        const templateLi = oneIteratedIngredientName;
-        ingredientNameLi.innerHTML = templateLi;
-        FILTERED_INGREDIENTS_NAMES_LIST.appendChild(ingredientNameLi);
+        const templateLi = oneIteratedApplianceName;
+        applianceNameLi.innerHTML = templateLi;
+        FILTERED_APPLIANCES_NAMES_LIST.appendChild(applianceNameLi);
     }
-    console.log("FILTERED_INGREDIENTS_NAMES_LIST vaut:", FILTERED_INGREDIENTS_NAMES_LIST);
+    // console.log("FILTERED_APPLIANCES_NAMES_LIST vaut:", FILTERED_APPLIANCES_NAMES_LIST);
 
-    return FILTERED_INGREDIENTS_NAMES_LIST;
+    return FILTERED_APPLIANCES_NAMES_LIST;
 };

@@ -36,18 +36,21 @@ import { searchItemsByTagName } from "../search/searchItemsByTagName.js";
 
 export function globalListeners(getRecipesJSON) {
 
-    ingredientsListeners(getRecipesJSON, handleClickOnTagsList, 
+    // TODO simplify parameters list for all the functions below
+        // TODO it should be `ingredientsListeners()`
+
+    ingredientsListeners(getRecipesJSON, handleClickOnTagsList,
         handleListToggle, handleInput, displayAllRecipes, searchRecipeByTagNameAndPropertyName,
-        createOneTag, displayOneTag, searchItemsByTagName, 
+        createOneTag, displayOneTag, searchItemsByTagName
     );
 
-    appliancesListeners(getRecipesJSON, handleClickOnTagsList, 
+    appliancesListeners(getRecipesJSON, handleClickOnTagsList,
         handleListToggle, handleInput, displayAllRecipes, searchRecipeByTagNameAndPropertyName,
-        createOneTag, displayOneTag, searchItemsByTagName,
+        createOneTag, displayOneTag, searchItemsByTagName
     );
 
-    ustensilsListeners(getRecipesJSON, handleClickOnTagsList, 
+    ustensilsListeners(getRecipesJSON, handleClickOnTagsList,
         handleListToggle, handleInput, displayAllRecipes, searchRecipeByTagNameAndPropertyName,
-        createOneTag, displayOneTag, searchItemsByTagName,
+        createOneTag, displayOneTag, searchItemsByTagName
     );
 };

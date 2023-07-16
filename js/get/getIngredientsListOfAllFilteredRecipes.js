@@ -2,26 +2,25 @@
 
 import { getRecipesFromRecipesList } from "./getRecipesFromRecipesList.js";
 
-export function getIngredientsListOfAllFilteredRecipes(propertyName, tagFactory, 
-    createOneTag, displayOneTag, displayAllRecipes, getRecipesJSON, 
-    searchRecipeByTagNameAndPropertyName) {
+export function getIngredientsListOfAllFilteredRecipes() {
 
-    // Récupération de la liste des recipes
+    // Récupération de la liste des recipes filtrées
     const filteredRecipesLiArr = getRecipesFromRecipesList();
+    // console.log("filteredRecipesLiArr vaut:", filteredRecipesLiArr);
 
     // Tableau de stockage de tous les noms d'ingrédients de toutes les recipes
     const allRecipesIngredientsTxtNamesArr = [];
-    // const allRecipesTagsTxtNamesArr = [];
+    // console.log("allRecipesIngredientsTxtNamesArr vaut:", allRecipesIngredientsTxtNamesArr);
 
     // Tableau de stockage des noms d'ingrédients uniques de toutes les recipes
     let allUniqueRecipesIngredientsTxtNamesArr = [];
-    // const allUniqueRecipesIngredientsTxtNamesArr = [];
+    // console.log("allUniqueRecipesIngredientsTxtNamesArr vaut:", allUniqueRecipesIngredientsTxtNamesArr);
 
 
     filteredRecipesLiArr.forEach((recipe) => {
 
-        // On récupère le nom de la recipe
-        const recipeNameTxt = recipe.querySelector(".recipe-name-wrapper").innerText;
+        // On récupère le nom de la recipe filtrée
+        const recipeNameTxt = recipe.querySelector(".recipe-name-wrapper").innerText.toLowerCase();
         console.log("-------> recipeNameTxt vaut:", recipeNameTxt);
 
         // On accède au wrapper d'ingrédients de chaque recipe
@@ -41,25 +40,20 @@ export function getIngredientsListOfAllFilteredRecipes(propertyName, tagFactory,
         recipeIngredientsLiArr.forEach((ingredient) => {
 
             // On récupère son nom
-            const ingredientNameTxt = ingredient.querySelector(".recipe-ingredient-span-ingredient").innerText;
-            // console.log(ingredientNameTxt);
-            // const ingredientNameTxt = tagName.innerHTML;
+            const ingredientNameTxt = ingredient.querySelector(".recipe-ingredient-span-ingredient").innerText.toLowerCase();
+            // console.log("ingredientNameTxt vaut:", ingredientNameTxt);
 
             // On l'ajoute au tableau de stockage de tous les ingrédients
             allRecipesIngredientsTxtNamesArr.push(ingredientNameTxt);
-            // allRecipesTagsTxtNamesArr.push(ingredientNameTxt);
+            // console.log("allRecipesIngredientsTxtNamesArr vaut:", allRecipesIngredientsTxtNamesArr);
 
             // On enlève les noms d'ingrédients en doublons
             allUniqueRecipesIngredientsTxtNamesArr = allRecipesIngredientsTxtNamesArr.filter(
-            // allUniqueRecipesIngredientsTxtNamesArr = allRecipesTagsTxtNamesArr.filter(
-                (x, i) => allRecipesIngredientsTxtNamesArr.indexOf(x) === i);
-                // (x, i) => allRecipesTagsTxtNamesArr.indexOf(x) === i);
-
+                (x, i) => allRecipesIngredientsTxtNamesArr.indexOf(x) === i).sort();
         });
 
         console.log("allRecipesIngredientsTxtNamesArr vaut:", allRecipesIngredientsTxtNamesArr);
         console.log("allUniqueRecipesIngredientsTxtNamesArr vaut:", allUniqueRecipesIngredientsTxtNamesArr);
     });
-
     return allUniqueRecipesIngredientsTxtNamesArr;
 };  

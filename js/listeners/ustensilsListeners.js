@@ -76,9 +76,9 @@ export function ustensilsListeners(
 
         li.addEventListener("click", (evt) => {
 
-            console.log("ustensilsListeners dit event vaut:", evt);
-            handleClickOnTagsList(evt, getRecipesJSON, searchRecipeByTagNameAndPropertyName,
-                displayAllRecipes, createOneTag, displayOneTag);
+            // console.log("ustensilsListeners dit event vaut:", evt);
+            
+            handleClickOnTagsList(evt, getRecipesJSON, createOneTag, displayOneTag);
         });
     });
 };

@@ -15,16 +15,18 @@ import { getUniqueUstensilsNames } from "../get/getUniqueUstensilsNames.js";
 
 import { createFilteredByTagNameUstensilsList } from "../create/createFilteredByTagNameUstensilsList.js";
 
+// TODO the function does not need all these parameters
 export function ingredientsListeners(
+    getRecipesJSON, handleClickOnTagsList,
+    handleListToggle, handleInput, displayAllRecipes, searchRecipeByTagNameAndPropertyName,
+    createOneTag, displayOneTag, searchItemsByTagName) {
 
-    getRecipesJSON, handleClickOnTagsList, handleListToggle, handleInput,
-    displayAllRecipes, searchRecipeByTagNameAndPropertyName, createOneTag, displayOneTag,
-    searchItemsByTagName) {
-
+    // Get elements from the DOM linked to ingredients selection
     const ingredientsBtn = document.querySelector("#ingredients-btn-wrapper");
     const ingredientsListWrapper = document.querySelector("#ingredients-list");
     const ingredientsSearchInput = document.querySelector("#ingredients-search-input");
     const ingredientsForm = document.querySelector("#ingredients-form");
+
     const propertyName = "ingredient";
 
     // Récupération du prototype de la liste des ingrédients
@@ -42,9 +44,13 @@ export function ingredientsListeners(
         handleListToggle(ingredientsListWrapper, ingredientsSearchInput, propertyName);
     });
 
-
+    // event triggered when user hits Enter in the ingredients search input
+    // TODO simplify: why does the submit event here not trigger the same code than the click event below (`handleClickOnTagsList`)?
     ingredientsForm.addEventListener("submit", function (event) {
         event.preventDefault();
+
+        // debugger;
+        // console.log("USER JUST HIT ENTER ON THE INGREDIENTS SEARCH INPUT");
 
         // On stocke la valeur du nom du tag
         const tagNameValue = ingredientsSearchInput.value;
@@ -56,6 +62,9 @@ export function ingredientsListeners(
         // On masque la liste des ingrédients et l'input du formulaire
         ingredientsListWrapper.className = "hide";
         ingredientsSearchInput.className = "hide";
+
+        // debugger;
+        // console.log("END OF ENTER ON THE INGREDIENTS SEARCH INPUT EVENT");
     });
 
 
@@ -73,12 +82,12 @@ export function ingredientsListeners(
     // console.log("ingredientsItemsNodeList vaut:", ingredientsItemsNodeList);
 
     ingredientsItemsNodeList.forEach(li => {
-        
+
         li.addEventListener("click", (evt) => {
 
-            console.log("ingredientsListeners dit event vaut:", evt);
-            handleClickOnTagsList(evt, getRecipesJSON, searchRecipeByTagNameAndPropertyName,
-                displayAllRecipes, createOneTag, displayOneTag);
+            // console.log("ingredientsListeners dit event vaut:", evt);
+
+            handleClickOnTagsList(evt, getRecipesJSON, createOneTag, displayOneTag);
         });
     });
 };

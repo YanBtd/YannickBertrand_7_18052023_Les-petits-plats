@@ -76,9 +76,9 @@ export function appliancesListeners(
 
         li.addEventListener("click", (evt) => {
 
-            console.log("appliancesListeners dit event vaut:", evt);
-            handleClickOnTagsList(evt, getRecipesJSON, searchRecipeByTagNameAndPropertyName,
-                displayAllRecipes, createOneTag, displayOneTag);
+            // console.log("appliancesListeners dit event vaut:", evt);
+            
+            handleClickOnTagsList(evt, getRecipesJSON, createOneTag, displayOneTag);
         });
     });
 };

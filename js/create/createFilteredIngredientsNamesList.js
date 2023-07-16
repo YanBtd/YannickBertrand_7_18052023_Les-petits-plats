@@ -25,7 +25,7 @@ export function createFilteredIngredientsNamesList() {
         ingredientNameLi.innerHTML = templateLi;
         FILTERED_INGREDIENTS_NAMES_LIST.appendChild(ingredientNameLi);
     }
-    console.log("FILTERED_INGREDIENTS_NAMES_LIST vaut:", FILTERED_INGREDIENTS_NAMES_LIST);
+    // console.log("FILTERED_INGREDIENTS_NAMES_LIST vaut:", FILTERED_INGREDIENTS_NAMES_LIST);
 
     return FILTERED_INGREDIENTS_NAMES_LIST;
 };

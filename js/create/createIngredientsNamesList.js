@@ -2,6 +2,7 @@
 
 import { getUniqueIngredientsNames } from "../get/getUniqueIngredientsNames.js";
 
+// TODO this function parameter should not be here
 export function createIngredientsNamesList(getRecipesJSON) {
 
     const allUniqueIngredientsOfAllRecipesArr = getUniqueIngredientsNames(getRecipesJSON);

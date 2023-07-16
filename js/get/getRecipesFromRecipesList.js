@@ -18,7 +18,7 @@ export function getRecipesFromRecipesList() {
     for (let i = 0; i < filteredRecipesLiNodeList.length; i++) {
         filteredRecipesLiArr.push(filteredRecipesLiNodeList[i]);
     }
-    console.log(filteredRecipesLiArr);
+    // console.log(filteredRecipesLiArr);
 
     return filteredRecipesLiArr;
 };
